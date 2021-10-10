@@ -18,13 +18,13 @@
               <div class="input-text clearFix">
                 <i></i>
                 <input type="text" placeholder="手机号" />
-                <span class="error-msg">错误提示信息</span>
+                <!-- <span class="error-msg">错误提示信息</span> -->
               </div>
 
               <div class="input-text clearFix">
                 <i class="pwd"></i>
                 <input type="text" placeholder="请输入密码" />
-                <span class="error-msg">错误提示信息</span>
+                <!-- <span class="error-msg">错误提示信息</span> -->
               </div>
 
               <div class="setting clearFix">
