@@ -3,6 +3,6 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-export default new Vue.Store({
-  modules: {}
-});
+// export default new Vue.Store({
+//   // modules: {}
+// });

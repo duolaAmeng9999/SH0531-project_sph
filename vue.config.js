@@ -1,6 +1,6 @@
 const path = require("path");
-const banners = require("./src/mock/banners.json")
-const floors = require("./src/mock/floors.json")
+/* const banners = require("./src/mock/banners.json")
+const floors = require("./src/mock/floors.json") */
 function resolve(dir) {
   return path.join(__dirname, dir);
 }
