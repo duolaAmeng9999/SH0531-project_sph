@@ -5,10 +5,14 @@ const notFound = () =>
   import(/* webpackChunkName: "login" */ "pages/notFound/notFound");
 const Home = () => import(/* webpackChunkName: "home" */ "pages/home/Home");
 const Login = () => import(/* webpackChunkName: "login" */ "pages/login/Login");
-const Register = () => import(/* webpackChunkName: "register" */ "pages/register/Register")
-const Search = () => import(/* webpackChunkName: "register" */ "pages/search/Search")
-const Order = () => import(/* webpackChunkName: "register" */ "pages/order/Order")
-const ShoppCart = () => import(/* webpackChunkName: "register" */ "pages/shoppCart/ShoppCart")
+const Register = () =>
+  import(/* webpackChunkName: "register" */ "pages/register/Register");
+const Search = () =>
+  import(/* webpackChunkName: "register" */ "pages/search/Search");
+const Order = () =>
+  import(/* webpackChunkName: "register" */ "pages/order/Order");
+const ShoppCart = () =>
+  import(/* webpackChunkName: "register" */ "pages/shoppCart/ShoppCart");
 
 const router = new VueRouter({
   mode: "history",
@@ -36,7 +40,6 @@ const router = new VueRouter({
       path: "/register",
       component: Register,
       meta: { isShowFooter: true }
-
     },
     {
       name: "search",
