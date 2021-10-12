@@ -1,8 +1,8 @@
 import axios from "axios";
-import nprogress from "nprogress";
-import NProgress from "nprogress"
+import Nprogress from "nprogress"
 const apiAxios = axios.create({
-    baseURL:"/api"
+    baseURL:"/Love/api",
+    timeout: 3000
 })
 // 添加请求拦截器
 apiAxios.interceptors.request.use(function (config) {
