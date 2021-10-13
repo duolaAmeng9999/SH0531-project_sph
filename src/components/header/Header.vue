@@ -61,12 +61,15 @@ export default {
   },
   methods: {
     toSearch() {
-    /*   this.$router.replace({
+      /*   this.$router.replace({
         keyWords: this.keyWords,
       }); */
-      let options = {name:"search"};
-      if(this.keyWords) options.params = {keyWords:this.keyWords}
-      this.$router.push(options)
+      let options = { name: "search" };
+      if (Object.keys(this.$route.query).length !== 0) {
+        options.query = this.$route.query;
+      }
+      if (this.keyWords) options.params = { keyWords: this.keyWords };
+      this.$router.push(options);
     },
   },
 };

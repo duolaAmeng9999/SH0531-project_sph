@@ -1,5 +1,12 @@
 <template>
   <div>
+    <div>
+      <h3>keyWords: {{ keyWords }}</h3>
+      <h3>category1id:{{ category1id }}</h3>
+      <h3>category2id:{{ category2id }}</h3>
+      <h3>category3id:{{ category3id }}</h3>
+      <h3>categoryname:{{ categoryname }}</h3>
+    </div>
     <TypeNav></TypeNav>
     <!--list-content-->
     <div class="main">
@@ -699,6 +706,13 @@
 import TypeNav from "components/typeNav/TypeNav";
 export default {
   name: "Search",
+  props: [
+    "category1id",
+    "category2id",
+    "category3id",
+    "categoryname",
+    "keyWords",
+  ],
   components: {
     TypeNav,
   },

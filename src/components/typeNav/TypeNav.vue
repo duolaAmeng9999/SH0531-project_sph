@@ -13,7 +13,7 @@
         <a href="###">有趣</a>
         <a href="###">秒杀</a>
       </nav>
-      <div class="sort">
+      <div class="sort" @click="toSearch">
         <div class="all-sort-list2">
           <!-- 一级分类 -->
           <div
@@ -24,7 +24,12 @@
             :class="{ showList: currentIndex === index }"
           >
             <h3>
-              <a href="">{{ firstLevel.categoryName }}</a>
+              <a
+                href="javascript:;"
+                :data-current1id="firstLevel.categoryId"
+                :data-currentname="firstLevel.categoryName"
+                >{{ firstLevel.categoryName }}</a
+              >
             </h3>
             <div class="item-list clearfix">
               <!-- 二级分类 -->
@@ -35,7 +40,12 @@
                   :key="secondLevel.categoryId"
                 >
                   <dt>
-                    <a href="">{{ secondLevel.categoryName }}</a>
+                    <a
+                      href="javascript:;"
+                      :data-current2id="secondLevel.categoryId"
+                      :data-currentname="secondLevel.categoryName"
+                      >{{ secondLevel.categoryName }}</a
+                    >
                   </dt>
                   <!--三级分类 -->
                   <dd>
@@ -43,7 +53,12 @@
                       v-for="threeLevel in secondLevel.categoryChild"
                       :key="threeLevel.categoryId"
                     >
-                      <a href="">{{ threeLevel.categoryName }}</a>
+                      <a
+                        href="javascript:;"
+                        :data-current3id="threeLevel.categoryId"
+                        :data-currentname="threeLevel.categoryName"
+                        >{{ threeLevel.categoryName }}</a
+                      >
                     </em>
                   </dd>
                 </dl>
@@ -75,7 +90,26 @@ export default {
       if (this.currentIndex > -2) {
         this.currentIndex = index;
       }
-    }, 3001),
+    }, 326),
+    toSearch(event) {
+      console.log(event.target);
+      let {
+        current1id: category1id,
+        current2id: category2id,
+        current3id: category3id,
+        currentname: categoryname,
+      } = event.target.dataset;
+
+      let options = { name: "search", query: {} };
+      category1id ? (options.query.category1id = category1id) : "";
+      category2id ? (options.query.category2id = category2id) : "";
+      category3id ? (options.query.category3id = category3id) : "";
+      categoryname ? (options.query.categoryname = categoryname) : "";
+      if (Object.keys(this.$route.params).length !== 0) {
+        options.params = this.$route.params;
+      }
+      this.$router.push(options);
+    },
   },
   computed: {
     ...mapState("product", ["baseCategoryList"]),
