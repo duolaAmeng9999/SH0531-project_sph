@@ -1,8 +1,10 @@
 <template>
   <!-- 商品分类导航 -->
   <div class="type-nav" @mouseleave="leaveCategory">
-    <div class="container" @mouseenter="currentIndex = -1">
-      <h2 class="all">全部商品分类</h2>
+    <div class="container" @mouseenter="currentIndex = -1"  @mouseleave="allLeave">
+      <h2 class="all" @mouseenter="allEnter">
+        全部商品分类
+      </h2>
       <nav class="nav">
         <a href="###">服装城</a>
         <a href="###">美妆馆</a>
@@ -13,7 +15,7 @@
         <a href="###">有趣</a>
         <a href="###">秒杀</a>
       </nav>
-      <div class="sort" @click="toSearch">
+      <div class="sort" @click="toSearch" v-show="showSort">
         <div class="all-sort-list2">
           <!-- 一级分类 -->
           <div
@@ -78,8 +80,8 @@ export default {
   name: "TypeNav",
   data() {
     return {
-      isSort: -1,
       currentIndex: -2,
+      showSort: this.$route.name.toLowerCase() !== "search",
     };
   },
   methods: {
@@ -110,6 +112,16 @@ export default {
       }
       this.$router.push(options);
     },
+    allEnter() {
+      if (this.$route.name.toLowerCase() === "search") {
+        this.showSort = true;
+      }
+    },
+    allLeave() {
+      if (this.$route.name.toLowerCase() === "search") {
+        this.showSort = false;
+      }
+    }
   },
   computed: {
     ...mapState("product", ["baseCategoryList"]),

@@ -56,7 +56,8 @@ const router = new VueRouter({
         category3id: $router.query.category3id,
         categoryname: $router.query.categoryname,
        }
-      }
+      },
+      // meta: {hideTypeof: false}
     },
     {
       name: "order",
