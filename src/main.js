@@ -5,6 +5,8 @@ import store from "store/store";
 import VueRouter from "vue-router";
 import router from "router/router";
 
+import "./effect/css/transition.css"
+
 Vue.use(VueRouter);
 
 Vue.config.productionTip = false;

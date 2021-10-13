@@ -1,10 +1,12 @@
 <template>
   <!-- 商品分类导航 -->
   <div class="type-nav" @mouseleave="leaveCategory">
-    <div class="container" @mouseenter="currentIndex = -1"  @mouseleave="allLeave">
-      <h2 class="all" @mouseenter="allEnter">
-        全部商品分类
-      </h2>
+    <div
+      class="container"
+      @mouseenter="currentIndex = -1"
+      @mouseleave="allLeave"
+    >
+      <h2 class="all" @mouseenter="allEnter">全部商品分类</h2>
       <nav class="nav">
         <a href="###">服装城</a>
         <a href="###">美妆馆</a>
@@ -15,60 +17,62 @@
         <a href="###">有趣</a>
         <a href="###">秒杀</a>
       </nav>
-      <div class="sort" @click="toSearch" v-show="showSort">
-        <div class="all-sort-list2">
-          <!-- 一级分类 -->
-          <div
-            class="item"
-            v-for="(firstLevel, index) in baseCategoryList"
-            :key="firstLevel.categoryId"
-            @mouseenter="enterCategory(index)"
-            :class="{ showList: currentIndex === index }"
-          >
-            <h3>
-              <a
-                href="javascript:;"
-                :data-current1id="firstLevel.categoryId"
-                :data-currentname="firstLevel.categoryName"
-                >{{ firstLevel.categoryName }}</a
-              >
-            </h3>
-            <div class="item-list clearfix">
-              <!-- 二级分类 -->
-              <div class="subitem">
-                <dl
-                  class="fore"
-                  v-for="secondLevel in firstLevel.categoryChild"
-                  :key="secondLevel.categoryId"
+      <transition name="wenjing">
+        <div class="sort" @click="toSearch" v-show="showSort">
+          <div class="all-sort-list2">
+            <!-- 一级分类 -->
+            <div
+              class="item"
+              v-for="(firstLevel, index) in baseCategoryList"
+              :key="firstLevel.categoryId"
+              @mouseenter="enterCategory(index)"
+              :class="{ showList: currentIndex === index }"
+            >
+              <h3>
+                <a
+                  href="javascript:;"
+                  :data-current1id="firstLevel.categoryId"
+                  :data-currentname="firstLevel.categoryName"
+                  >{{ firstLevel.categoryName }}</a
                 >
-                  <dt>
-                    <a
-                      href="javascript:;"
-                      :data-current2id="secondLevel.categoryId"
-                      :data-currentname="secondLevel.categoryName"
-                      >{{ secondLevel.categoryName }}</a
-                    >
-                  </dt>
-                  <!--三级分类 -->
-                  <dd>
-                    <em
-                      v-for="threeLevel in secondLevel.categoryChild"
-                      :key="threeLevel.categoryId"
-                    >
+              </h3>
+              <div class="item-list clearfix">
+                <!-- 二级分类 -->
+                <div class="subitem">
+                  <dl
+                    class="fore"
+                    v-for="secondLevel in firstLevel.categoryChild"
+                    :key="secondLevel.categoryId"
+                  >
+                    <dt>
                       <a
                         href="javascript:;"
-                        :data-current3id="threeLevel.categoryId"
-                        :data-currentname="threeLevel.categoryName"
-                        >{{ threeLevel.categoryName }}</a
+                        :data-current2id="secondLevel.categoryId"
+                        :data-currentname="secondLevel.categoryName"
+                        >{{ secondLevel.categoryName }}</a
                       >
-                    </em>
-                  </dd>
-                </dl>
+                    </dt>
+                    <!--三级分类 -->
+                    <dd>
+                      <em
+                        v-for="threeLevel in secondLevel.categoryChild"
+                        :key="threeLevel.categoryId"
+                      >
+                        <a
+                          href="javascript:;"
+                          :data-current3id="threeLevel.categoryId"
+                          :data-currentname="threeLevel.categoryName"
+                          >{{ threeLevel.categoryName }}</a
+                        >
+                      </em>
+                    </dd>
+                  </dl>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -121,7 +125,7 @@ export default {
       if (this.$route.name.toLowerCase() === "search") {
         this.showSort = false;
       }
-    }
+    },
   },
   computed: {
     ...mapState("product", ["baseCategoryList"]),
