@@ -15,7 +15,7 @@
 </template>
 
 <script>
-// 引入 swiper 样式文件
+// 引入 swiper 样式文件 
 import "swiper/swiper-bundle.min.css";
 import Swiper from "swiper/swiper-bundle.min.js";
 
