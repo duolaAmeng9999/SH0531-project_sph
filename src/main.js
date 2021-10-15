@@ -6,8 +6,10 @@ import VueRouter from "vue-router";
 import router from "router/router";
 import "mock/mock"
 
+// 全局公共组组件
 import "./effect/css/transition.css"
 import "nprogress/nprogress.css"
+import "util/commonComponent.js"
 
 
 Vue.use(VueRouter);

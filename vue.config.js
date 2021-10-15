@@ -15,7 +15,8 @@ module.exports = {
         store: resolve("src/store"),
         api: resolve("src/api"),
         mock: resolve("src/mock"),
-        common: resolve("src/common")
+        commonComponent: resolve("src/commonComponent"),
+        util: resolve("src/util")
       }
     }
   },

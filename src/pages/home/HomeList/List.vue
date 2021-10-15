@@ -82,7 +82,7 @@
 
 <script>
 import { mapState } from "vuex";
-import Carousel from "common/Carousel";
+import Carousel from "commonComponent/Carousel";
 
 export default {
   name: "List",
@@ -91,7 +91,7 @@ export default {
       options: {
         loop: true, // 循环模式选项
         speed: 200,
-        autoplay: true,   
+        autoplay: true, 
       },
     };
   },
