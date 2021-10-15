@@ -14,7 +14,8 @@ module.exports = {
         router: resolve("src/router"),
         store: resolve("src/store"),
         api: resolve("src/api"),
-        mock: resolve("src/mock")
+        mock: resolve("src/mock"),
+        common: resolve("src/common")
       }
     }
   },

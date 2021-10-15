@@ -4,23 +4,7 @@
     <div class="sortList clearfix">
       <div class="center">
         <!--banner轮播-->
-        <div class="swiper-container" id="mySwiper" ref="swiper">
-          <div class="swiper-wrapper">
-            <div
-              class="swiper-slide"
-              v-for="banners in banners"
-              :key="banners.id"
-            >
-              <img :src="banners.url" />
-            </div>
-          </div>
-          <!-- 如果需要分页器 -->
-          <div class="swiper-pagination"></div>
-
-          <!-- 如果需要导航按钮 -->
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
+        <Carousel :options="options" :banners="banners"></Carousel>
       </div>
       <div class="right">
         <div class="news">
@@ -96,23 +80,14 @@
 </template>
 
 <script>
-import "swiper/swiper-bundle.min.css";
-import Swiper from "swiper/swiper-bundle.min.js";
-
 import { mapState } from "vuex";
+import Carousel from "common/Carousel";
+
 export default {
   name: "List",
-  /* data() {
+  data() {
     return {
-      banners: this.$store.state.carousel.banners
-    }
-  }, */
-  computed: {
-    ...mapState("carousel", ["banners"]),
-  },
-  mounted() {
-    this.$nextTick(() => {
-      new Swiper(this.$refs.swiper, {
+      options: {
         loop: true, // 循环模式选项
         speed: 200,
         autoplay: true,
@@ -123,8 +98,14 @@ export default {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
-      });
-    });
+      },
+    };
+  },
+  computed: {
+    ...mapState("carousel", ["banners"]),
+  },
+  components: {
+    Carousel,
   },
 };
 </script>
