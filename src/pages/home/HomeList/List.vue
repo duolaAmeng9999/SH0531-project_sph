@@ -8,6 +8,7 @@
       </div>
       <div class="right">
         <div class="news">
+          <!-- fndskfe -->
           <h4>
             <em class="fl">尚品汇快报</em>
             <span class="fr tip">更多 ></span>
