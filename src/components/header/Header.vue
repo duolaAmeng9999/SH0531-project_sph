@@ -64,6 +64,7 @@ export default {
       /*   this.$router.replace({
         keyWords: this.keyWords,
       }); */
+<<<<<<< HEAD
       /*  let options = { name: "search" };
       if (this.keyWords) options.params = { keyWords: this.keyWords };
       this.$router.push(options); */
@@ -73,6 +74,14 @@ export default {
           keyWords: this.keyWords,
         },
       });
+=======
+      let options = { name: "search" };
+      if (Object.keys(this.$route.query).length !== 0) {
+        options.query = this.$route.query;
+      }
+      if (this.keyWords) options.params = { keyWords: this.keyWords };
+      this.$router.push(options);
+>>>>>>> wenjing
     },
   },
 };

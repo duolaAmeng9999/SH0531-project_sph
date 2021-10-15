@@ -27,16 +27,19 @@ const router = new VueRouter({
       redirect: "/home"
     },
     {
+      name: "home",
       path: "/home",
       component: Home
     },
 
     {
+      name: "login",
       path: "/login",
       component: Login,
       meta: { isShowFooter: true }
     },
     {
+      name: "register",
       path: "/register",
       component: Register,
       meta: { isShowFooter: true }
@@ -45,13 +48,24 @@ const router = new VueRouter({
       name: "search",
       path: "/search/:keyWords?",
       component: Search,
-      props: true
+      props($router) {
+       return {
+        keyWords: $router.params.keyWords,
+        category1id: $router.query.category1id,
+        category2id: $router.query.category2id,
+        category3id: $router.query.category3id,
+        categoryname: $router.query.categoryname,
+       }
+      },
+      // meta: {hideTypeof: false}
     },
     {
+      name: "order",
       path: "/order",
       component: Order
     },
     {
+      name: "shoppCart",
       path: "/shoppCart",
       component: ShoppCart
     }

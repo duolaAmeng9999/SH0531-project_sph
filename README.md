@@ -23,6 +23,7 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+<<<<<<< HEAD
 
     ## 需求一
          1. 配置代理服务
@@ -41,3 +42,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
          2. 限制节流
          3. 添加移入事件和离开事件
          4. 给一级分类添加一个节流函数
+=======
+## 轮播图效果
+    1. mock 一个轮播图
+>>>>>>> wenjing
