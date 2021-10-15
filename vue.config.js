@@ -36,7 +36,7 @@ module.exports = {
         changeOrigin: true // 用于控制请求中的 host 值
       },
       "/Love": {
-        target: "http://39.98.123.211",
+        target: "http://39.98.123.211/",
         pathRewrite: { "^/Love": "" },
         ws: true, // 用于支持 websocket
         changeOrigin: true // 用于控制请求中的 host 值
