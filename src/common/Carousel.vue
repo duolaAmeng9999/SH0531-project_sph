@@ -15,7 +15,7 @@
 </template>
 
 <script>
-// 引入 swiper 样式文件 
+// 引入 swiper 样式文件
 import "swiper/swiper-bundle.min.css";
 import Swiper from "swiper/swiper-bundle.min.js";
 
@@ -27,6 +27,13 @@ export default {
       handler() {
         this.$nextTick(() => {
           new Swiper(this.$refs.swiper, {
+            pagination: {
+              el: ".swiper-pagination",
+            },
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
             ...this.options,
           });
         });
