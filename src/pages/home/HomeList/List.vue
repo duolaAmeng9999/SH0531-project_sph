@@ -90,14 +90,7 @@ export default {
       options: {
         loop: true, // 循环模式选项
         speed: 200,
-        autoplay: true,
-        pagination: {
-          el: ".swiper-pagination",
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
+        autoplay: true,   
       },
     };
   },
