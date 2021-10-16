@@ -1,5 +1,5 @@
 <template>
-  <div class="swiper-container" id="mySwiper" ref="swiper">
+  <div class="swiper-container" ref="swiper">
     <div class="swiper-wrapper">
       <div class="swiper-slide" v-for="banners in banners" :key="banners.id">
         <img :src="banners.url" />
@@ -23,10 +23,11 @@ export default {
   name: "Carousel",
   props: ["options", "banners"],
   watch: {
-    banners: {
+    "banners": {
       handler() {
         this.$nextTick(() => {
           new Swiper(this.$refs.swiper, {
+            direction: "horizontal", // 水平切换选项
             pagination: {
               el: ".swiper-pagination",
               clickable: true,

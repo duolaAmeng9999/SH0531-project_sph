@@ -1,4 +1,4 @@
-import { getMockBanners, getMockFloor } from "api/api";
+import { getMockBanners, getMockFloors } from "api/api";
 
 const carousel = {
   namespaced: true,
@@ -9,10 +9,10 @@ const carousel = {
         context.commit("GETMOCKBANNERS", banners);
       }
     },
-    async getMockFloor(context) {
-      const { code, data: floors } = await getMockFloor();
+    async getMockFloors(context) {
+      const { code, data: floors } = await getMockFloors();
       if (code === 200) {
-        context.commit("GETMOCKFLOOR", floors);
+        context.commit("GETMOCKFLOORS", floors);
       }
     }
   },
@@ -20,7 +20,7 @@ const carousel = {
     GETMOCKBANNERS(state, banners) {
       state.banners = banners;
     },
-    GETMOCKFLOOR(state, floors) {
+    GETMOCKFLOORS(state, floors) {
       state.floors = floors;
     }
   },
@@ -30,7 +30,15 @@ const carousel = {
     name: "wenjing"
   },
   getters: {
-    
+    handleFloors(state) {
+      return state.floors.map(item => ({
+        ...item,
+        carouselList: item.carouselList.map(({ id, imgUrl }) => ({
+          id,
+          url: imgUrl
+        }))
+      }));
+    },
   }
 };
 export default carousel;

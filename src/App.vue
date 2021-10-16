@@ -16,7 +16,7 @@ export default {
   name: "App",
   methods: {
     ...mapActions("product",["getBaseCategoryList"]),
-    ...mapActions("carousel",["getMockBanners", "getMockFloor"]),
+    ...mapActions("carousel",["getMockBanners", "getMockFloors"]),
   },
   components: {
     "sph-header": Header,
@@ -28,7 +28,7 @@ export default {
     // 获取轮播图数据并入仓库
     await this.getMockBanners();
     // 获取楼层数据并入仓库
-    await this.getMockFloor();
+    await this.getMockFloors();
   },
 };
 </script>

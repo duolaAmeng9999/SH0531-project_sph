@@ -82,7 +82,7 @@
 
 <script>
 import { mapState } from "vuex";
-import Carousel from "commonComponent/Carousel";
+// import Carousel from "commonComponent/Carousel";
 
 export default {
   name: "List",
@@ -98,9 +98,9 @@ export default {
   computed: {
     ...mapState("carousel", ["banners"]),
   },
-  components: {
+ /*  components: {
     Carousel,
-  },
+  }, */
 };
 </script>
 

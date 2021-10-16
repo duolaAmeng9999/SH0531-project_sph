@@ -8,4 +8,4 @@ export const getBaseCategoryList = () => apiAxios.get("/product/getBaseCategoryL
 // 获取轮播数据 Crousel
 export const getMockBanners = () => mockAxios.get("/banners");
 // 获取楼层数据 Frool 
-export const getMackFrool = () => mockAxios.get("/flor");
+export const getMockFloors = () => mockAxios.get("/floor");

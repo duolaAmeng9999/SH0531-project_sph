@@ -11,13 +11,8 @@ Mock.mock("/mock/banners", "get", {
   ]
 });
 // 使用 Mock, 楼层数据 Floor
-import floor from "./json/floors.json";
+import floors from "./json/floors.json";
 Mock.mock("/mock/floor", "get", {
   code: 200,
-  "data|2": [
-    {
-      "id|+1": 0,
-      url: floor
-    }
-  ]
+  "data|2": floors
 });
