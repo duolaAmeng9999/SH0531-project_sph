@@ -23,7 +23,7 @@ export default {
   name: "Carousel",
   props: ["options", "banners"],
   watch: {
-    "banners": {
+    banners: {
       handler() {
         this.$nextTick(() => {
           new Swiper(this.$refs.swiper, {
@@ -40,6 +40,7 @@ export default {
           });
         });
       },
+      immediate: true,
     },
   },
 };

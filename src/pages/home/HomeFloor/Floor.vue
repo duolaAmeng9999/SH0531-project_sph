@@ -4,7 +4,7 @@
     <div class="floor">
       <div class="py-container">
         <div class="title clearfix">
-          <h3 class="fl">家用电器</h3>
+          <h3 class="fl">{{floors.name}}</h3>
           <div class="fr">
             <ul class="nav-tabs clearfix">
               <li class="active">
@@ -47,10 +47,7 @@
               </div>
               <div class="floorBanner">
                 <!-- 轮播图 -->
-                <Carousel
-                  :banners="floors.carouselList"
-                  :options="options"
-                ></Carousel>
+                <Carousel :banners="floors.carouselList"></Carousel>
               </div>
               <div class="split">
                 <span class="floor-x-line"></span>
@@ -86,15 +83,10 @@
 export default {
   name: "Floor",
   props: ["floors"],
-
   data() {
     return {
-      options: {
-        loop: true, // 循环模式选项
-        speed: 200,
-        autoplay: true,
-      },
-    };
+      
+    }
   },
 };
 </script>
