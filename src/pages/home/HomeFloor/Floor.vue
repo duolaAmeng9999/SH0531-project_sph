@@ -83,11 +83,6 @@
 export default {
   name: "Floor",
   props: ["floors"],
-  data() {
-    return {
-      
-    }
-  },
 };
 </script>
 
