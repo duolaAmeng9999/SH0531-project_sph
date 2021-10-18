@@ -583,12 +583,7 @@
               </li>
             </ul>
           </div>
-          <!-- 分页 -->
-          <Pagination
-            :allData="allData"
-            :manyData="manyData"
-            :consecutivePages="consecutivePages"
-          ></Pagination>
+          
         </div>
         <!--hotsale-->
         <div class="clearfix hot-sale">
@@ -674,6 +669,12 @@
             </ul>
           </div>
         </div>
+        <!-- 分页 -->
+          <Pagination
+            :allData="allData"
+            :manyData="manyData"
+            :consecutivePages="consecutivePages"
+          ></Pagination>
       </div>
     </div>
   </div>

@@ -1,18 +1,40 @@
 <template>
   <div class="pagination">
-    <button :disabled="currentPage <= 1">上一页</button>
-    <button v-show="startAndEnd.start !== 1">1</button>
-    <button v-show="startAndEnd.start !== 2" disabled>···</button>
     <button
-      v-for="item in totalPages"
+      :disabled="currentPage <= 1"
+      @click="updateCurrentPage(currentPage - 1)"
+    >
+      上一页
+    </button>
+    <button
+      v-show="startAndEnd.start !== 1"
+      @click="updateCurrentPage((CurrentPage = 1))"
+    >
+      1
+    </button>
+    <button v-show="startAndEnd.start > 2" disabled>···</button>
+    <button
+      v-for="(item, index) in totalPages"
       :key="item"
+      :class="{ active: currentPage === item }"
       v-if="item >= startAndEnd.start && item <= startAndEnd.end"
+      @click="updateCurrentPage(item)"
     >
       {{ item }}
     </button>
     <button v-show="startAndEnd.end < totalPages - 1" disabled>···</button>
-    <button v-show="startAndEnd.end !== totalPages">{{ totalPages }}</button>
-    <button :disabled="startAndEnd.end >= totalPages">下一页</button>
+    <button
+      v-show="startAndEnd.end !== totalPages"
+      @click="updateCurrentPage((currentPage = totalPages))"
+    >
+      {{ totalPages }}
+    </button>
+    <button
+      :disabled="currentPage >= totalPages"
+      @click="updateCurrentPage(currentPage + 1)"
+    >
+      下一页
+    </button>
     <button>共{{ totalPages }}页</button>
     <button style="margin-left: 30px">共 {{ allData }} 条</button>
   </div>
@@ -41,6 +63,11 @@ export default {
       currentPage: 10,
     };
   },
+  methods: {
+    updateCurrentPage(item) {
+      this.currentPage = item;
+    },
+  },
   computed: {
     // 计算总的页数
     totalPages() {
@@ -51,10 +78,10 @@ export default {
       let start = 0;
       let end = 0;
       const { currentPage, consecutivePages, totalPages } = this;
-      start = currentPage - Math.floor(consecutivePages / 2); // 31
+      start = currentPage - Math.floor(consecutivePages / 2); // 29
       if (start < 1) start = 1;
 
-      end = consecutivePages + start - 1;
+      end = consecutivePages + start - 1; // 33
       if (end > totalPages) {
         end = totalPages; // 33
         // 让 start 进行重新补位
