@@ -583,7 +583,6 @@
               </li>
             </ul>
           </div>
-          
         </div>
         <!--hotsale-->
         <div class="clearfix hot-sale">
@@ -670,11 +669,13 @@
           </div>
         </div>
         <!-- 分页 -->
-          <Pagination
-            :allData="allData"
-            :manyData="manyData"
-            :consecutivePages="consecutivePages"
-          ></Pagination>
+        <Pagination
+          :allData="allData"
+          :pageSize="pageSize"
+          :consecutivePages="consecutivePages"
+          @currentPage="currentPage"
+          :initPage="initPage"
+        ></Pagination>
       </div>
     </div>
   </div>
@@ -682,6 +683,8 @@
 
 <script>
 import TypeNav from "components/typeNav/TypeNav";
+import { mapActions, mapState } from "vuex";
+
 export default {
   name: "Search",
   props: [
@@ -694,15 +697,72 @@ export default {
   data() {
     return {
       allData: 326,
-      manyData: 10,
+      pageSize: 10,
       consecutivePages: 5,
+      initPage: 1,
+      option: {
+        keyword: this.keyWords,
+        category1Id: this.category1id,
+        category2Id: this.category2id,
+        category3Id: this.category3id,
+        categoryName: this.categoryname,
+      },
     };
+  },
+  computed: {
+    ...mapState("search", ["searchData"]),
+  },
+  methods: {
+    ...mapActions("search", { getSearchList: "getSearchList" }),
+    async currentPage(item) {
+      this.initPage = item;
+      let option = {
+        pageNo: item,
+        pageSize: this.pageSize,
+        ...this.option,
+      };
+      await this.getSearchList(option);
+    },
+    // 当搜索条件改变时，同步 data 中的 options 数据
+    updateOption(newOption) {
+      this.option.keyword = newOption.keyword;
+      this.option.category1Id = newOption.category1Id;
+      this.option.category2Id = newOption.category2Id;
+      this.option.category3Id = newOption.category3Id;
+      this.option.categoryName = newOption.categoryName;
+    },
+  },
+
+  watch: {
+    // 监测整个 search 路由组件, 搜索条件改变
+    $route: {
+      immediate: true,
+      deep: true,
+      async handler(newRouter) {
+        let newOption = {
+          keyword: newRouter.params.keyWords,
+          category1Id: newRouter.query.category1id,
+          category2Id: newRouter.query.category2id,
+          category3Id: newRouter.query.category3id,
+          categoryName: newRouter.query.categoryname,
+        };
+        let option = {
+          pageNo: this.initPage,
+          pageSize: this.pageSize,
+          ...this.option,
+        };
+        // 同步搜索条件
+        this.updateOption(newOption);
+        await this.getSearchList(option);
+        console.log(this.option);
+      },
+    },
   },
   components: {
     TypeNav,
   },
 };
-</script>
+</script> 
 
 <style scoped lang="less">
 .main {

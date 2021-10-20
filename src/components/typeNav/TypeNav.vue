@@ -98,7 +98,6 @@ export default {
       }
     }, 326),
     toSearch(event) {
-      console.log(event.target);
       let {
         current1id: category1id,
         current2id: category2id,

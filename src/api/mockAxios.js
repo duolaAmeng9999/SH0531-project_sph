@@ -16,6 +16,7 @@ mockAxios.interceptors.request.use(function(config) {
 // 添加响应拦截器
 mockAxios.interceptors.response.use(
   function(response) {
+    NProgress.done(); // 关闭精度条
     // 对响应数据做点什么
     return response.data;
   },

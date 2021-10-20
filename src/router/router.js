@@ -49,14 +49,14 @@ const router = new VueRouter({
       path: "/search/:keyWords?",
       component: Search,
       props($router) {
-       return {
-        keyWords: $router.params.keyWords,
-        category1id: $router.query.category1id,
-        category2id: $router.query.category2id,
-        category3id: $router.query.category3id,
-        categoryname: $router.query.categoryname,
-       }
-      },
+        return {
+          keyWords: $router.params.keyWords,
+          category1id: $router.query.category1id,
+          category2id: $router.query.category2id,
+          category3id: $router.query.category3id,
+          categoryname: $router.query.categoryname
+        };
+      }
       // meta: {hideTypeof: false}
     },
     {

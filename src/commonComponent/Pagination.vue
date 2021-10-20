@@ -47,6 +47,7 @@
     总页数(内部计算得到数据)  totalPages
     连续页码数(外部数据)v     consecutivePages
     当期的页数(内部数据)      currentPage
+    外部传入的初始页          inintPage
 
     开始页 和 结束页 start end
         - start: end - consecutivePages - 1
@@ -57,10 +58,10 @@
 
 export default {
   name: "Pagination",
-  props: ["allData", "manyData", "consecutivePages"],
+  props: ["allData", "pageSize", "consecutivePages", "initPage"],
   data() {
     return {
-      currentPage: 10,
+      currentPage: this.initPage,
     };
   },
   methods: {
@@ -68,10 +69,26 @@ export default {
       this.currentPage = item;
     },
   },
+  watch: {
+    currentPage: {
+      deep: true,
+      // immediate: true,
+      handler(newCurrentPage) {
+        this.$emit("currentPage", newCurrentPage);
+      },
+    },
+    initPage: {
+      deep: true,
+      immediate: true,
+      handler(newInintPage) {
+        this.currentPage = newInintPage;
+      },
+    },
+  },
   computed: {
     // 计算总的页数
     totalPages() {
-      return Math.ceil(this.allData / this.manyData);
+      return Math.ceil(this.allData / this.pageSize);
     },
     // 机算 开始页 和 结束页
     startAndEnd() {
@@ -95,9 +112,6 @@ export default {
         end,
       };
     },
-  },
-  mounted() {
-    console.log(this.totalPages);
   },
 };
 </script>
